@@ -4,13 +4,13 @@ DATABASES=""
 MYSQL_HOST="appfactory-prod.xxxxx.xxxx.amazonaws.com"
 
 # Drop Existing DBs
-for db in api_mgt_registry apimgt jpadb registry rss_dev rss_prod rss_staging rss_test userstore appfactory_config as_dev_config as_prod_config as_test_config as_staging_config ss_dev_config ss_prod_config ss_test_config ss_staging_config api_mgt_config af_bps_config redmine sc_config
+for db in api_mgt_registry apimgt jpadb registry rss_dev rss_prod rss_staging rss_test userstore appfactory_config as_dev_config as_prod_config as_test_config as_staging_config ss_dev_config ss_prod_config ss_test_config ss_staging_config api_mgt_config af_bps_config redmine sc_config testdb
 do 
 	mysql -h $MYSQL_HOST -u$USER -p$PASS -Bse "drop database if exists $db"
 done
 
 # Create DBs
-for db in api_mgt_registry apimgt jpadb registry rss_dev rss_prod rss_staging rss_test userstore appfactory_config as_dev_config as_prod_config as_test_config as_staging_config ss_dev_config ss_prod_config ss_test_config ss_staging_config api_mgt_config af_bps_config redmine sc_config
+for db in api_mgt_registry apimgt jpadb registry rss_dev rss_prod rss_staging rss_test userstore appfactory_config as_dev_config as_prod_config as_test_config as_staging_config ss_dev_config ss_prod_config ss_test_config ss_staging_config api_mgt_config af_bps_config redmine sc_config testdb
 do 
 	mysql -h $MYSQL_HOST -u$USER -p$PASS -Bse "create database $db"
 done
@@ -42,6 +42,7 @@ mysql -h $MYSQL_HOST -u$USER -p$PASS  -Bse "grant all on rss_test.* to rss_prod 
 mysql -h $MYSQL_HOST -u$USER -p$PASS  -Bse "grant all on rss_staging.* to rss_staging identified by 'xxxxx'"
 mysql -h $MYSQL_HOST -u$USER -p$PASS  -Bse "grant all on apimgt.* to apimgt identified by 'xxxxx'"
 mysql -h $MYSQL_HOST -u$USER -p$PASS  -Bse "grant all on api_mgt_registry.* to apimgt identified by 'xxxxx'"
+mysql -h $MYSQL_HOST -u$USER -p$PASS  -Bse "grant all on testdb.* to testuser identified by 'xxxxx'"
 
 
 
