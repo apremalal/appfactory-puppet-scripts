@@ -1,0 +1,15 @@
+{
+    "theme" : {
+        "base" : "fancy"
+    },
+    "context" : "/store",    
+    "ssoConfiguration" : {
+        "enabled" : "true",
+        "issuer" : "API_STORE",
+        "identityProviderURL" : "https://<%= wso2_env_domain %>/samlsso",
+        "keyStorePassword" : "<%= apistore_keystore_password %>",
+        "identityAlias" : "<%= apistore_keystore_alias %>",
+        "keyStoreName" : "<%= target %>/repository/resources/security/wso2carbon.jks"
+    }
+
+}

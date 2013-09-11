@@ -1,0 +1,28 @@
+autoscalerService.url=https://<%= cc_subdomain %>.<%= stratos_domain %>:<%= cc_https_port %>/services/CloudControllerService/
+autoscaler.time.out=190000
+cartridge.agent.epr=http://<%= sc_subdomain %>.<%= stratos_domain %>:9768/services/CartridgeAgentService
+#cloud.controller.ip=172.17.0.1
+git.host.name=<%= git_subdomain %>.<%= stratos_domain %>
+git.host.ip=<%= git_host_ip %>
+git.repo.notification.url=https://<%= sc_subdomain %>:<%= adc_port %>/services/RepoNotificationService/
+#identity.server.url=https://<%= sc_subdomain %>.<%= stratos_domain %>:9447/services/RepoNotificationService/
+
+adc.jdbc.url=jdbc:mysql://<%= adc_mysql_host %>:3306/<%= adc_mysql_db %>
+adc.jdbc.username=<%= adc_mysql_username %>
+adc.jdbc.password=<%= adc_mysql_password %>
+adc.jdbc.driver=com.mysql.jdbc.Driver
+
+mb.server.ip=<%= cc_subdomain %>.<%= stratos_domain %>:<%= mb_port %>
+
+append.script=<%= carbon_home %>/bin/add_entry_zone_file.sh
+remove.script=<%= carbon_home %>/bin/remove_entry_zone_file.sh
+bind.file.path=/etc/bind/db.<%= stratos_domain %>
+elb.ip=<%= elb_ip %>
+
+bam.ip=<%= bam_ip %>
+bam.port=<%= bam_port %>
+
+repo.key.path=/home/wso2/.ssh/id_rsa
+
+cartridge.cluster.max.limit=5
+max.attempts=50

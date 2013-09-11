@@ -1,0 +1,17 @@
+{
+    "theme" : {
+        "base" : "default",
+        "subtheme" : "modern"
+    },
+    "context" : "/publisher"
+    ,
+    "ssoConfiguration" : {
+        "enabled" : "true",
+        "issuer" : "API_PUBLISHER",
+        "identityProviderURL" : "https://<%= wso2_env_domain %>/samlsso",
+        "keyStorePassword" : "<%= apipublisher_keystore_password %>",
+        "identityAlias" : "<%= apipublisher_keystore_alias %>",
+        "keyStoreName" : "<%= target %>/repository/resources/security/wso2carbon.jks"
+    }
+
+}

@@ -1,0 +1,11 @@
+#!/usr/bin/env groovy
+
+
+def repoUrl= "http://<%=s2gitblit_server %>:<%=s2gitblit_server_port %>/git/" + repository + ".git"
+
+
+println repoUrl
+json='{"repository":{"url":"'+repoUrl+'"}}'
+println json
+def response = "curl  -k  -X POST https://<%=adc_server_domain %>:<%=adc_server_port %>/repo_notification  -d payload=${json}".execute().text 
+println response

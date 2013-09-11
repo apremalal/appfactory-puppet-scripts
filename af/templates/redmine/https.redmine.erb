@@ -1,0 +1,39 @@
+<VirtualHost *:443>
+        ServerName <%= redmine_domain %>
+        ServerAdmin techops@wso2.com
+
+
+
+        DocumentRoot /var/www/redmine
+        <Directory />
+                Options Indexes FollowSymLinks MultiViews
+                RailsBaseURI /
+                PassengerResolveSymlinksInDocumentRoot on
+                AllowOverride None
+        </Directory>
+
+
+        SSLEngine On
+
+#        SSLCertificateFile /etc/apache2/ssl/star_wso2_com.crt
+#        SSLCertificateKeyFile /etc/apache2/ssl/star_wso2_com.key
+#        SSLCertificateChainFile /etc/apache2/ssl/DigiCertCA.crt
+
+        SSLCertificateFile /etc/apache2/ssl/<%= redmine_certfile %>
+        SSLCertificateKeyFile /etc/apache2/ssl/<%= redmine_keyfile %>
+#        SSLCertificateChainFile /etc/apache2/ssl/<%= redmine_cafile %>
+
+        SSLHonorCipherOrder On
+        SSLProtocol -ALL +SSLv3 +TLSv1
+        SSLCipherSuite ECDHE-RSA-AES256-SHA384:AES256-SHA256:RC4:HIGH:!MD5:!aNULL:!EDH:!AESGCM
+        SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown
+
+        ErrorLog ${APACHE_LOG_DIR}/https.redmine/error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/https.redmine/access.log combined
+</VirtualHost>
+

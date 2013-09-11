@@ -1,0 +1,60 @@
+<!-- Use below section to specify properties that are needed in order to start Cartridges.  -->
+    <cartridges>
+
+        <!-- You can have 1..n cartridge elements. -->
+        <cartridge type="asstaging" host="<%= as_subdomain %>.staging.<%= wso2_env_domain%>" provider="wso2" multiTenant="true">
+            <!-- cartridge element can have 0..n properties, and they'll be overwritten by the properties
+                 specified under iaasProvider child elements of cartridge element. -->
+
+            <description>This is the test description of app server cartridge</description>
+            <!-- A cartridge element should add a reference to an existing IaaS provider (specified
+                 in the above &lt;iaasProviders&gt; section) or it can create a completely new IaaS
+                 Provider (which should have a unique "type" attribute. -->
+            <!--<iaasProvider type="openstack" >
+                <imageId>nova/a3caa3b8-3d26-4cf7-ae95-1c98e81b8c64</imageId>
+                <property name="keyPair" value="stratos-demo"/>
+                <property name="instanceType" value="nova/2"/>
+                <property name="securityGroups" value="default"/>
+                <property name="payload" value="resources/as.txt"/>
+            </iaasProvider>-->
+	    <iaasProvider type="openstack" >
+                <imageId><%= openstack_image_id %></imageId>
+                <property name="keyPair" value="<%=openstack_keypair_name %>"/>
+                <property name="instanceType" value="RegionOne/2"/>
+                <property name="securityGroups" value="<%=openstack_security_group %>"/>
+                <property name="payload" value="repository/resources/payload/as-staging.zip"/>
+                <maxInstanceLimit>1</maxInstanceLimit>
+            </iaasProvider>
+
+           <!--iaasProvider type="ec2" >
+                <imageId>us-east-1/ami-13573a7a</imageId>
+                <maxInstanceLimit>5</maxInstanceLimit>
+            </iaasProvider-->
+            <!--<iaasProvider type="ec2" >
+                <imageId>nova/a3caa3b8-3d26-4cf7-ae95-1c98e81b8c64</imageId>           
+                <property name="keyPair" value="aa"/>
+                <property name="securityGroups" value="default"/>
+                <property name="instanceType" value="nova/2"/>
+                <property name="payload" value="resources/as-ec2.txt"/>
+            </iaasProvider>-->
+            <deployment baseDir="/opt/wso2as">
+                <dir>axis2modules=copy#app#files#here</dir>
+                <dir>axis2services=copy#saml#libraries#here</dir>
+                <dir>jaggeryapps=copy#saml#libraries#here</dir>
+                <dir>jaxwebapps=copy#saml#libraries#here</dir>
+                <dir>modulemetafiles=copy#saml#libraries#here</dir>
+                <dir>servicemetafiles=copy#saml#libraries#here</dir>
+                <dir>webapps=copy#saml#libraries#here</dir>
+            </deployment>
+           <portMapping>
+               <http port="80" proxyPort="8280"/>
+               <https port="443" proxyPort="8243"/>
+           </portMapping>
+            <!--<appTypes>
+                <property name="axis2services" isBothmapping="false"/>
+                <property name="webapps" isBothmapping="true"/>
+                <property name="jaxwebapps" isBothmapping="true"/>
+                <property name="jaggeryapps" isBothmapping="true"/>
+            </appTypes>-->
+        </cartridge>
+    </cartridges>

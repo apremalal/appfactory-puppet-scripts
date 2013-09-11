@@ -1,0 +1,54 @@
+127.0.0.1	localhost
+
+192.168.18.118   puppetmaster.wso2.com puppetmaster puppet
+192.168.18.118   packagerepo.domain.com
+192.168.18.104   appfactory01.domain.com
+192.168.18.105   appfactory02.domain.com
+192.168.18.106   appfactory03.domain.com
+192.168.18.107   appfactory04.domain.com
+192.168.18.108   appfactory05.domain.com
+192.168.18.109   appfactory06.domain.com
+192.168.18.110   appfactory07.domain.com
+192.168.18.111   appfactory08.domain.com
+192.168.18.112   appfactory09.domain.com
+192.168.18.113   appfactory10.domain.com
+192.168.18.114   appfactory11.domain.com
+192.168.18.115   appfactory12.domain.com
+
+
+<%= server_ip %>        bind.<%= wso2_env_domain %>
+<%= server_ip %>        local.<%= wso2_env_domain %>
+<%= server_ip %>        <%= fqdn %>
+
+
+
+
+192.168.18.104	 <%= wso2_env_domain %>
+192.168.18.104	 bps.<%= wso2_env_domain %>
+192.168.18.106   jenkins.<%= wso2_env_domain %>
+192.168.18.107   git.<%= wso2_env_domain %>
+192.168.18.108	 apimanager.<%= wso2_env_domain %>
+192.168.18.116	 redmine.<%= wso2_env_domain %>
+
+192.168.18.112  cc.<%= wso2_env_domain %>
+192.168.18.113	sc.<%= wso2_env_domain %>
+192.168.18.113	s2elb.<%= wso2_env_domain %>
+192.168.18.114	s2git.<%= wso2_env_domain %>
+
+192.168.18.115   mysql.<%= wso2_env_domain %>
+192.168.18.115   ldap.<%= wso2_env_domain %>
+
+192.168.18.110   storage.dev.<%= wso2_env_domain %>
+192.168.18.110	   storage.test.<%= wso2_env_domain %>
+192.168.18.110	   storage.staging.<%= wso2_env_domain %>
+192.168.18.110	   storage.<%= wso2_env_domain %>
+
+192.168.18.113	   appserver.dev.<%= wso2_env_domain %>
+192.168.18.113	   appserver.test.<%= wso2_env_domain %>
+192.168.18.113	   appserver.staging.<%= wso2_env_domain %>
+192.168.18.113	   appserver.<%= wso2_env_domain %>
+
+
+# SVN repo for depsync
+192.168.4.221	   svn.<%= wso2_env_domain %>
+

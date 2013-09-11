@@ -1,0 +1,4 @@
+<VirtualHost <%= vhost_name %>:<%= port %>>
+	ServerName <%= servername %>
+	Redirect 301 / https://<%= servername %>
+</VirtualHost>

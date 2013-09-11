@@ -1,0 +1,216 @@
+stage { 'configure': require => Stage['main'] }
+stage { 'deploy': require => Stage['configure'] }
+
+node basenode {
+  $package_repo 	= "http://puppetmaster.wso2.com"
+  $local_package_dir	= "/mnt/packs/"
+  $deploy_new_packs	= "true"
+}
+
+node confignode inherits basenode  {
+  ## Service subdomains
+  $wso2_env_domain 	= "appfactory.domain.com"
+  $stratos_domain 	= "appfactory.domain.com"
+  $as_subdomain 	= "appserver"
+  $mb_subdomain 	= "messaging"
+  $governance_subdomain	= "governance"
+  $management_subdomain = "mgt"
+  $bam_subdomain        = "monitor"
+  $bps_subdomain        = "process"
+  $brs_subdomain        = "rule"
+  $cep_subdomain        = "cep"
+  $dss_subdomain        = "data"
+  $esb_subdomain        = "esb"
+  $gs_subdomain         = "gadget"
+  $cg_subdomain         = "cloudgateway"
+  $ts_subdomain         = "task"
+  $is_subdomain         = "identity"
+  $ms_subdomain         = "mashup"
+  $ss_subdomain         = "storage"
+  $am_subdomain 	= "apimanager"
+  $cc_subdomain		= "cc"
+  $sc_subdomain		= "sc"
+  $git_subdomain	= "git"
+  $elb_subdomain	= "elb"
+  $s2git_subdomain	= "s2git"
+	
+
+  ## SC configs
+  $git_host_ip		= "10.6.170.199"
+  $usrmgt_class   = "org.wso2.carbon.appfactory.userstore.OTAppFactoryUserStore"
+
+
+  ## ADC
+  $adc_host		= "sc.${wso2_env_domain}"
+  $adc_port		= "9445"
+  $adc_tribes_port	= "5001"
+  $adc_mysql_host	= "mysql.${wso2_env_domain}"
+  $adc_mysql_username	= "s2user"
+  $adc_mysql_password	= "xxxx"
+  $adc_mysql_db		= "s2_foundation"
+
+  $elb_ip		= "x.x.x.x"
+  $bam_ip		= "x.x.x.x"
+  $bam_port		= "7771"
+
+  ## CC configs
+  $cc_https_port	= "9444"
+
+  # IaaS settings
+  $iaas_scaler_identity	    = "xxxxxxxxxxxxxxxxxx"
+  $iaas_scaler_credentials  = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  $ec2_owner_id		    = "xxxx-xxxx-xxxx"
+  $ec2_availability_zone    = "us-east-1c"
+  # comma seperated string "s2slive-all,default"
+  $ec2_security_groups	    = "s2_for_af,appfactory,common"
+  $ec2_instance_type	    = "m1.large"
+  $ec2_keypair		    = "xxxxxxxxxxxxxxxxx"
+  $ec2_image_id		    = "xxxxxxxxxxxxxxxx"
+
+  $cloudcontroller_identity = "xxxxx"
+  $cloudcontrlller_creds    = "xxxxx"
+  $jclouds_endpoint	    = "http://x.x.x.x:5000/"
+  $jcoulds_floating_ips	    = "false"
+  $openstack_image_id	    = "RegionOne/xxxxxxxxxxxxxxxxxxxxxxxx"
+  $payload_location	    = "repository/resources/payload"
+  $openstack_keypair_file = "afdev.pem"
+  $openstack_keypair_name = "afdev"
+  $openstack_security_group = "Appfactory"
+
+  ##MB config
+  $mb_port		    = "5673"
+	
+  ## Server details for billing
+  $time_zone		  = "GMT-8:00"
+
+  ## Userstore MySQL server configuration details
+  $mysql_server_1         = "mysql1.${wso2_env_domain}"
+  $mysql_server_2         = "mysql1.${wso2_env_domain}"
+  $mysql_userstore	  = "mysql.${wso2_env_domain}"
+  $mysql_port             = "3306"
+  $max_connections        = "100000"
+  $max_active             = "150"
+  $max_wait               = "360000"
+  $mysql_driver_file      = 'mysql-connector-java-5.1.12-bin.jar'
+
+  ## User store config Database details
+  $registry_user          = "registry"
+  $registry_password      = "xxxx"
+  $registry_database      = "governance"
+
+
+  $userstore_user         = "userstore"
+  $userstore_password     = "xxxx"
+  $userstore_database     = "userstore"
+
+  $billing_user           = "billing"
+  $billing_password       = "xxxx"
+  $billing_database       = "billing"
+  $billing_datasource     = "WSO2BillingDS"
+
+  ## Cassandra details
+  $css0_subdomain         = "node0.cassandra"
+  $css1_subdomain         = "node1.cassandra"
+  $css2_subdomain         = "node2.cassandra"
+  $css_cluster_name       = "Stratos Dev Setup"
+  $css_port               = "9160"
+  $cassandra_username     = "cassandra"
+  $cassandra_password     = "xxxx"
+  $hdfs_url               = "hadoop0"
+  $hdfs_port              = "9000"
+  $hdfs_job_tracker_port  = "9001"
+
+  $super_admin_email      = "admin@domain.com"
+  $notification_email     = "admin@domain.com"
+  $finance_email          = "amilam@domain.com"
+  $stratos_admin_user     = "stratos"
+  $stratos_admin_password = "xxxx"
+
+  ## LOGEVENT configurations
+  $receiver_url           = "receiver.domain.com"
+  $receiver_port          = "7617"
+  $receiver_secure_port   = "7717"
+  $receiver_username      = "cassandra"
+  $receiver_password      = "xxxx"
+
+  ## App Factory
+  $adminuser_name           = "admin@admin.com"
+  $user_mgt_adminuser_name  = "admin.admin.com" 
+  $adminuser_passwd	    = "xxxx"
+  $app_creation_delay	    = "1000"
+  $af_registration_link	    = "http://wso2.org/user/register"
+  $af_identity_provider	    = "https://${wso2_env_domain}/samlsso"
+  $af_keystore_passwd	    = "xxxx"
+  $af_keystore_alias	    = "wso2carbon"
+  $jenkins_resource_uid	    = "admin@admin.com"
+  $jenkins_apitoken	    = "7ea3f81bbe068aab15690c443ae1ae2c"
+  $redmine_admin_uname	    = "admin"
+  $redmine_admin_passwd	    = "xxxx"
+  $jpadb_user		    = "jpadb"
+  $jpadb_passwd		    = "xxxx"
+  $truststore_passwd	    = "xxxx"
+  $s2_enabled		    = "true"
+  $cartridge_dev_alias	    = "asdev"
+  $cartridge_dev_type	    = "asdev"
+  $cartridge_test_alias	    = "astest"
+  $cartridge_test_type	    = "astest"
+  $cartridge_staging_alias  = "asstaging"
+  $cartridge_staging_type   = "asstaging"
+  $cartridge_prod_alias	    = "asprod"
+  $cartridge_prod_type	    = "asprod"
+  $usrmgt_connectionname    ="cn=appfacadmin,dc=ldap,dc=wso2,dc=org"
+  $usrmgt_connectionpasswd  ="wso2ldap"
+  $wso2_appfactory_ou	    = "ou=appfactory-beta,ou=services,dc=ldap,dc=wso2,dc=org"
+  $s2_gitblit_admin_name    ="admin"
+  $s2_gitblit_admin_passwd  ="admin"
+  $s2_gitblit_hostname	    ="${s2git_subdomain}.${wso2_env_domain}"
+  $s2_gitblit_port	    ="80"
+
+}
+
+node 'appfactory09.domain.com' inherits confignode{
+	$server_ip      = $ipaddress
+
+	include system_config
+
+	class {"stratos::cc":
+                version            => "1.0.1",
+                offset             => 1,
+                tribes_port        => 5001,
+                maintenance_mode   => "true",
+		owner		   => "ubuntu",
+		group		   => "ubuntu",
+                target             => "/mnt/${server_ip}",
+                stage              => "deploy",
+        }
+}
+
+node 'appfactory10.domain.com' inherits confignode{
+	$server_ip      = $ipaddress
+
+	include system_config
+
+	class {"stratos::sc":
+                version            => "1.0.1",
+                offset             => 2,
+                tribes_port        => 5001,
+                maintenance_mode   => "true",
+		owner		   => "ubuntu",
+		group		   => "ubuntu",
+                target             => "/mnt/${server_ip}",
+                stage              => "deploy",
+        }
+
+	class {"stratos::elb":
+                services           =>  ["identity,*,mgt"],
+                version            => "2.0.5",
+                maintenance_mode   => "true",
+                auto_scaler        => "false",
+                auto_failover      => "false",
+		owner		   => "root",
+		group		   => "root",
+		target             => "/mnt/${server_ip}",
+                stage              => "deploy",
+        }
+}
+

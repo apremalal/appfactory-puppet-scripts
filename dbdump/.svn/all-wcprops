@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump
+END
+datadump.sh
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/wso2/devops/stratoslive/!svn/ver/2085/scripts/appfactory-deployment-2013-04/dbdump/datadump.sh
+END
+redmine.sql.withldap+settings
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump/redmine.sql.withldap+settings
+END
+redmine.sql.raw
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump/redmine.sql.raw
+END
+redmine.sql.withsettings
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump/redmine.sql.withsettings
+END
+clear.sh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump/clear.sh
+END

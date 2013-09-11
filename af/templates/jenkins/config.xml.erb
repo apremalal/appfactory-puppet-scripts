@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors/>
+  <version>1.479</version>
+  <numExecutors>10</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="com.michelin.cio.hudson.plugins.rolestrategy.RoleBasedAuthorizationStrategy">
+    <roleMap type="globalRoles">
+      <role name="admin" pattern=".*">
+        <permissions>
+          <permission>hudson.model.Computer.Delete</permission>
+          <permission>hudson.model.View.Delete</permission>
+          <permission>hudson.model.Item.Workspace</permission>
+          <permission>hudson.model.Item.Discover</permission>
+          <permission>hudson.model.Hudson.ConfigureUpdateCenter</permission>
+          <permission>hudson.model.Item.Read</permission>
+          <permission>hudson.model.Item.Cancel</permission>
+          <permission>hudson.model.Computer.Create</permission>
+          <permission>hudson.model.Hudson.Read</permission>
+          <permission>hudson.model.View.Read</permission>
+          <permission>hudson.model.Item.Configure</permission>
+          <permission>hudson.model.Item.Delete</permission>
+          <permission>hudson.model.View.Configure</permission>
+          <permission>hudson.model.Hudson.Administer</permission>
+          <permission>hudson.model.Item.Create</permission>
+          <permission>hudson.model.Computer.Connect</permission>
+          <permission>hudson.model.Hudson.UploadPlugins</permission>
+          <permission>hudson.model.View.Create</permission>
+          <permission>hudson.model.Computer.Configure</permission>
+          <permission>hudson.model.Hudson.RunScripts</permission>
+          <permission>hudson.model.Computer.Disconnect</permission>
+          <permission>hudson.model.Item.Build</permission>
+        </permissions>
+        <assignedSIDs>
+          <sid><%= adminuser_name %></sid>
+        </assignedSIDs>
+      </role>
+      <role name="readonly" pattern=".*">
+        <permissions>
+          <permission>hudson.model.View.Configure</permission>
+          <permission>hudson.model.View.Delete</permission>
+          <permission>hudson.model.View.Create</permission>
+          <permission>hudson.model.Hudson.Read</permission>
+          <permission>hudson.model.View.Read</permission>
+        </permissions>
+        <assignedSIDs>
+        </assignedSIDs>
+      </role>
+    </roleMap>
+    <roleMap type="projectRoles">
+    </roleMap>
+  </authorizationStrategy>
+  <securityRealm class="org.jenkins.wso2.appfactory.CarbonSecurityRealm">
+    <clientTrustStore>/mnt/jenkins/client-truststore.jks</clientTrustStore>
+    <clientTrustStorePassword>wso2carbon</clientTrustStorePassword>
+    <authenticationServiceEPR>https://<%= wso2_env_domain %>/services/AuthenticationAdmin</authenticationServiceEPR>
+    <appfactorySystemUsername>admin@admin.com</appfactorySystemUsername>
+    <appfactorySystemUserPassword><%= adminuser_passwd %></appfactorySystemUserPassword>
+  </securityRealm>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${ITEM_ROOTDIR}/workspace</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <markupFormatter class="hudson.markup.RawHtmlMarkupFormatter">
+    <disableSyntaxHighlighting>false</disableSyntaxHighlighting>
+  </markupFormatter>
+    <jdks>
+    <jdk>
+      <name>java</name>
+      <home>/opt/java</home>
+      <properties/>
+    </jdk>
+  </jdks>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds/>
+  <slaves/>
+  <quietPeriod>5</quietPeriod>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>All</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+  </views>
+  <primaryView>All</primaryView>
+  <slaveAgentPort>0</slaveAgentPort>
+  <label></label>
+  <nodeProperties>
+    <hudson.slaves.EnvironmentVariablesNodeProperty>
+      <envVars serialization="custom">
+        <unserializable-parents/>
+        <tree-map>
+          <default>
+            <comparator class="hudson.util.CaseInsensitiveComparator"/>
+          </default>
+          <int>1</int>
+          <string>M2_HOME</string>
+          <string>/opt/apache-maven-3.0.5</string>
+        </tree-map>
+      </envVars>
+    </hudson.slaves.EnvironmentVariablesNodeProperty>
+  </nodeProperties>
+  <globalNodeProperties/>
+</hudson>

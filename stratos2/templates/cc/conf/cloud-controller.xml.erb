@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+  ~ Copyright 2005-2011 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+  
+<cloudController xmlns:svns="http://org.wso2.securevault/configuration">
+
+	<svns:secureVault
+		provider="org.wso2.securevault.secret.handler.SecretManagerSecretCallbackHandler" />
+
+    <dataPublisher enable="false">
+		<!-- BAM Server Info - default values are 'admin' and 'admin' 
+			 Optional element. -->
+		<bamServer>
+            <!-- BAM server URL should be specified in carbon.xml -->
+			<adminUserName>admin</adminUserName>
+			<adminPassword svns:secretAlias="cloud.controller.bam.server.admin.password">admin</adminPassword>
+		</bamServer>
+		<!-- Default cron expression is '1 * * * * ? *' meaning 'first second of every minute'.
+			 Optional element. -->
+		<cron>1 * * * * ? *</cron>
+		<!-- Cassandra cluster related info -->
+		<!--cassandraInfo>
+			<connectionUrl>localhost:9160</connectionUrl>
+			<userName>admin</userName>
+			<password svns:secretAlias="cloud.controller.cassandra.server.password">admin</password>
+		</cassandraInfo-->
+	</dataPublisher>
+
+    <topologySync enable="true">
+		<!-- MB server info -->
+		<mbServerUrl><%= cc_subdomain %>.<%= stratos_domain %>:<%= mb_port %></mbServerUrl>
+		<cron>1 * * * * ? *</cron>
+	</topologySync>	
+
+	<!-- Specify the properties that are common to an IaaS here. This element 
+		is not necessary [0..1]. But you can use this section to avoid specifying 
+		same property over and over again. -->
+	<iaasProviders>
+		<!--iaasProvider type="ec2" name="ec2 specific details">
+			<className>org.wso2.carbon.stratos.cloud.controller.iaases.AWSEC2Iaas</className>
+			<provider>aws-ec2</provider>
+			<identity svns:secretAlias="elastic.scaler.openstack.identity"><%= iaas_scaler_identity %></identity>
+			<credential svns:secretAlias="elastic.scaler.openstack.credential"><%= iaas_scaler_credentials %></credential>
+			<scaleUpOrder>1</scaleUpOrder>
+			<scaleDownOrder>2</scaleDownOrder>
+			<property name="jclouds.ec2.ami-query" value="owner-id=<%= ec2_owner_id %>;state=available;image-type=machine"/>
+			<property name="availabilityZone" value="<%= ec2_availability_zone %>"/>
+			<property name="securityGroups" value="<%= ec2_security_groups %>"/>
+			<property name="instanceType" value="<%= ec2_instance_type %>"/>
+			<property name="keyPair" value="<%= ec2_keypair %>"/>
+          		<property name="autoAssignIp" value="true"/>
+			<imageId><%= ec2_image_id %></imageId>
+		</iaasProvider-->
+		<iaasProvider type="openstack" name="openstack specific details">
+			<className>org.wso2.carbon.stratos.cloud.controller.iaases.OpenstackNovaIaas</className>
+			<provider>openstack-nova</provider>
+			<identity svns:secretAlias="cloud.controller.openstack.identity"><%= cloudcontroller_identity %></identity>
+			<credential svns:secretAlias="cloud.controller.openstack.credential"><%= cloudcontrlller_creds %></credential>
+			<property name="jclouds.endpoint" value="<%= jclouds_endpoint %>" />
+			<property name="jclouds.openstack-nova.auto-create-floating-ips" value="<%= jcoulds_floating_ips %>"/>
+			<property name="jclouds.api-version" value="2.0/" />
+			<scaleUpOrder>2</scaleUpOrder>
+			<scaleDownOrder>3</scaleDownOrder>
+			<property name="X" value="x" />
+			<property name="Y" value="y" />
+			<imageId><%= openstack_image_id %></imageId>
+		</iaasProvider>
+		</iaasProviders>
+</cloudController>

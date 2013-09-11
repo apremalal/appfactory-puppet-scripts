@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump/dbscripts
+END
+userstore.sql
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump/dbscripts/userstore.sql
+END
+jpadb.sql
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump/dbscripts/jpadb.sql
+END
+apimgt.sql
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump/dbscripts/apimgt.sql
+END
+wso2_rss_mysql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump/dbscripts/wso2_rss_mysql.sql
+END
+rss.sql
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump/dbscripts/rss.sql
+END
+api_mgt_registry.sql
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump/dbscripts/api_mgt_registry.sql
+END
+registry.sql
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/wso2/devops/stratoslive/!svn/ver/2083/scripts/appfactory-deployment-2013-04/dbdump/dbscripts/registry.sql
+END

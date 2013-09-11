@@ -1,0 +1,5 @@
+<service domain="appserver.dev.<%= wso2_env_domain %>" subDomain="__$default" tenantRange="*">
+        <cartridge type="asdev"/>
+        <host>appserver.dev.<%= wso2_env_domain %></host>
+        <payload>/mnt/<%= server_ip %>/wso2cc-1.0.1/repository/resources/payload/as-dev.zip</payload>
+</service>
