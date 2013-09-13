@@ -18,6 +18,34 @@ done
 
 #mysql -h $MYSQL_HOST -u$USER -p$PASS -D mysql -Bse "INSERT INTO user  (User,Host,Password) VALUES('jpadb','%',PASSWORD('keeW3keiqu5aiKieL2eeT2Aisaigoo'));"
 
+
+DBS_SAMPLE_DATABASE="testdb"
+DBS_SAMPLE_DBUSER="testuser"
+DBS_SAMPLE_DBUSERPASS="testuser123"
+DBS_SAMPLE_DBTABLE="Persons"
+
+#DBS Sample db creation
+mysql -h $MYSQL_HOST -u$USER -p$PASS -Bse "drop database if exists $DBS_SAMPLE_DATABASE"
+echo "drop database if exists $DBS_SAMPLE_DATABASE"
+
+mysql -h $MYSQL_HOST -u$USER -p$PASS -Bse "create database $DBS_SAMPLE_DATABASE"
+echo "create DBS_SAMPLE_DATABASE $DBS_SAMPLE_DATABASE"
+
+mysql -h $MYSQL_HOST -u$USER -p$PASS -Bse "create user $DBS_SAMPLE_DBUSER identified by '$DBS_SAMPLE_DBUSERPASS'"
+echo "create user $DBS_SAMPLE_DBUSER identified by '$DBS_SAMPLE_DBUSERPASS'"
+
+mysql -h $MYSQL_HOST -u$USER -p$PASS -Bse "grant SELECT on $DBS_SAMPLE_DATABASE.* to $DBS_SAMPLE_DBUSER identified by '$DBS_SAMPLE_DBUSERPASS'"
+echo "grant select on $DBS_SAMPLE_DATABASE.* to $DBS_SAMPLE_DBUSER identified by '$DBS_SAMPLE_DBUSERPASS'"
+
+mysql -h $MYSQL_HOST -u$USER -p$PASS -Bse "create table $DBS_SAMPLE_DATABASE.$DBS_SAMPLE_DBTABLE(id VARCHAR(100), data VARCHAR(100))"
+echo "create table $DBS_SAMPLE_DATABASE.$DBS_SAMPLE_DBTABLE(id VARCHAR(100), data VARCHAR(100))"
+
+mysql -h $MYSQL_HOST -u$USER -p$PASS -Bse "insert into $DBS_SAMPLE_DATABASE.$DBS_SAMPLE_DBTABLE values(1,'sample data1')"
+echo "insert into $DBS_SAMPLE_DATABASE.$DBS_SAMPLE_DBTABLE values(1,'sample data1')"
+
+mysql -h $MYSQL_HOST -u$USER -p$PASS -Bse "insert into $DBS_SAMPLE_DATABASE.$DBS_SAMPLE_DBTABLE values(2,'sample data 2')"
+echo "insert into $DBS_SAMPLE_DATABASE.$DBS_SAMPLE_DBTABLE values(1,'sample data 2')"
+
 mysql -h $MYSQL_HOST -u$USER -p$PASS  -Bse "grant all on registry.* to registry identified by 'xxxxx'"
 mysql -h $MYSQL_HOST -u$USER -p$PASS  -Bse "grant all on sc_config.* to registry identified by 'xxxxx'"
 mysql -h $MYSQL_HOST -u$USER -p$PASS  -Bse "grant all on appfactory_config.* to registry identified by 'xxxxx'"
