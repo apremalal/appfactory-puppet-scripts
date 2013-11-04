@@ -1,7 +1,7 @@
-USER="root"
+USER="appfactory"
 PASS="root"
 DATABASES=""
-MYSQL_HOST="localhost"
+MYSQL_HOST="appfactory-prod.xxxxx.xxxx.amazonaws.com"
 
 # Drop Existing DBs
 for db in api_mgt_registry apimgt jpadb registry rss_mgt userstore apim_userstore appfactory_config as_dev_config as_prod_config as_test_config as_staging_config ss_config api_mgt_config af_bps_config sc_config s2_foundation billing redmine
